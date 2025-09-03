@@ -7,42 +7,42 @@ namespace Lab01
 {
     public class Server : Machine
     {
-        public int RAMMb
+        public override string Name => "Server";
+        public override int RAMMb
         {
-            get; private set;
+            get;
         }
 
-        public IList<CPU> CPUs
+        public override IList<CPU> CPUs
         {
-            get; private set;
+            get;
         }
 
-        public IList<HDD> HDDs
+        public override IList<HDD> HDDs
         {
-            get; private set;
+            get;
         }
 
-        public PersonalComputerState State
-        {
-            get; private set;
-        }
+        private PersonalComputerState state;
+        public override PersonalComputerState State => state;
 
-        public void Poweroff()
+
+        public override void Poweroff()
         {
             System.Threading.Thread.Sleep(1000);
-            State = PersonalComputerState.OFF;
+            state = PersonalComputerState.OFF;
         }
 
-        public void Reboot()
+        public override void Reboot()
         {
             Poweroff();
             Start();
         }
 
-        public void Start()
+        public override void Start()
         {
             System.Threading.Thread.Sleep(5000);
-            State = PersonalComputerState.ON;
+            state = PersonalComputerState.ON;
         }
 
         public Server(int rAMMb, IList<CPU> cPUs, IList<HDD> hDDs)
@@ -50,7 +50,7 @@ namespace Lab01
             RAMMb = rAMMb;
             CPUs = cPUs;
             HDDs = hDDs;
-            State = PersonalComputerState.OFF;
+            state = PersonalComputerState.OFF;
         }
     }
 }

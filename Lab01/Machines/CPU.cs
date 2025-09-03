@@ -35,13 +35,23 @@ namespace Lab01
 
         public override string ToString()
         {
-            return $"Vendor ID: {VendorID};\n" +
-                $"Family: {Family};\n" +
-                $"Model: {Model};\n" +
-                $"Model Name: {ModelName};\n" +
-                $"MHz: {MHz};\n" +
-                $"Cache Size: {CacheSizeKb} Kb;\n" +
-                $"Flags: {string.Join(", ", Flags)};";
+            return "<table>" +
+                    "<tr>" +
+                        $"<th>Vendor ID</th><td>{VendorID}</td>" +
+                    "</tr><tr>" +
+                        $"<th>Family</th><td>{Family}</td>" +
+                        "</tr><tr>" +
+                        $"<th>Model</th><td>{Model}</td>" +
+                        "</tr><tr>" +
+                        $"<th>Model Name</th><td>{ModelName}</td>" +
+                        "</tr><tr>" +
+                        $"<th>MHz</th><td>{MHz}</td>" +
+                        "</tr><tr>" +
+                        $"<th>Cache Size</th><td>{CacheSizeKb} Kb</td>" +
+                        "</tr><tr>" +
+                        $"<th>Flags</th><td>{string.Join(", ", Flags)} </td>" +
+                    "</tr>" +
+                "</table>";
         
         }
     }

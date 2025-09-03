@@ -7,49 +7,50 @@ namespace Lab01
 {
     public class OfficePersonalComputer : Machine
     {
-        public int RAMMb {
-            get; private set;
-        }
-
-        public IList<CPU> CPUs
+        public override string Name => "Office PC";
+        public override int RAMMb
         {
-            get; private set;
+            get;
         }
 
-        public IList<HDD> HDDs
+        public override IList<CPU> CPUs
         {
-            get; private set;
+            get;
         }
 
-        public PersonalComputerState State
+        public override IList<HDD> HDDs
         {
-            get; private set;
+            get;
         }
 
-        public void Poweroff()
+        private PersonalComputerState state;
+        public override PersonalComputerState State => state;
+
+
+        public override void Poweroff()
         {
-            System.Threading.Thread.Sleep(50);
-            State = PersonalComputerState.OFF;
+            System.Threading.Thread.Sleep(200);
+            state = PersonalComputerState.OFF;
         }
 
-        public void Reboot()
+        public override void Reboot()
         {
             Poweroff();
             Start();
         }
 
-        public void Start()
+        public override void Start()
         {
             System.Threading.Thread.Sleep(1000);
-            State = PersonalComputerState.ON;
+            state = PersonalComputerState.ON;
         }
 
-        public OfficePersonalComputer(int ramMb, CPU cpu, HDD hdd)
+        public OfficePersonalComputer(int rAMMb, IList<CPU> cPUs, IList<HDD> hDDs)
         {
-            RAMMb = ramMb;
-            CPUs = new List<CPU> { cpu };
-            HDDs = new List<HDD> { hdd };
-            State = PersonalComputerState.OFF;
+            RAMMb = rAMMb;
+            CPUs = cPUs;
+            HDDs = hDDs;
+            state = PersonalComputerState.OFF;
         }
     }
 }

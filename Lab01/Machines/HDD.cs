@@ -28,11 +28,19 @@ namespace Lab01
 
         public override string ToString()
         {
-            return $"Model Number: {ModelNumber};\n" +
-                $"Serial Number: {SerialNumber};\n" +
-                $"Firmware Revision: {FirmwareRevision}\n;" +
-                $"Capacity: {CapacityBytes} bytes;\n" +
-                $"Sector Size: {SectorSizeBytes} bytes;";
+            return "<table>" +
+        "<tr>" +
+            $"<th>Model Number</th><td>{ModelNumber}</td>" +
+        "</tr><tr>" +
+            $"<th>Serial Number</th><td>{SerialNumber}</td>" +
+            "</tr><tr>" +
+            $"<th>Firmware Revision</th><td>{FirmwareRevision}</td>" +
+            "</tr><tr>" +
+            $"<th>Capacity</th><td>{CapacityBytes} bytes</td>" +
+            "</tr><tr>" +
+            $"<th>Sector Size</th><td>{SectorSizeBytes} bytes</td>" +
+        "</tr>" +
+    "</table>";
         }
     }
 }
